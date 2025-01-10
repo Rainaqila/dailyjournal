@@ -124,23 +124,22 @@ include "koneksi.php";
         <div class="container ">
             <h1 class="fw-bold display-4 pb-3">Gallery</h1>
             <div id="carouselExample" class="carousel slide ">
-              <div class="carousel-inner rounded-4 shadow">
-                <div class="carousel-item active">
-                  <img src="https://images.unsplash.com/photo-1503289130890-6eff9c5df553?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                  <img src="https://plus.unsplash.com/premium_photo-1681412205470-77848a519359?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                  <img src="https://images.unsplash.com/photo-1483366774565-c783b9f70e2c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                  <img src="https://images.unsplash.com/photo-1471086569966-db3eebc25a59?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                  <img src="https://images.unsplash.com/photo-1466781783364-36c955e42a7f?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="d-block w-100" alt="...">
-                </div>
-              </div>
+            <div class="carousel-inner rounded-5">
+                    <?php
+                    $sql = "SELECT * FROM gallery ORDER BY id ASC";
+                    $hasil = $conn->query($sql); 
+                    $active = true;
+
+                    while($row = $hasil->fetch_assoc()){
+                    ?>
+                    <div class="carousel-item <?= $active ? 'active' : '' ?>">
+                        <img src="img/<?= $row['gambar'] ?>" class="d-block w-100" alt="...">
+                    </div>
+                    <?php
+                    $active = false;
+                    }
+                    ?>
+            </div>
               <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
