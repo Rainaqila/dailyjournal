@@ -1,7 +1,7 @@
 <?php
 
 if (!isset($_SESSION['username'])) {
-    header("Location: login.php"); 
+    header("Location: login.php");
     exit();
 }
 
@@ -15,7 +15,7 @@ $user = mysqli_fetch_assoc($result);
     <form action="#" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="password">Ganti Password:</label>
-            <input type="password" class="form-control mt-2" id="password" 
+            <input type="password" class="form-control mt-2" id="password"
                 placeholder="Tuliskan Password Baru Jika Ingin Mengganti Password Saja" name="password">
         </div>
         <div class="form-group">
